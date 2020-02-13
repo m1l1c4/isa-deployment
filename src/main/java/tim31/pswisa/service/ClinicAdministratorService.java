@@ -27,6 +27,7 @@ import tim31.pswisa.repository.CheckUpRepository;
 import tim31.pswisa.repository.ClinicAdministratorRepository;
 import tim31.pswisa.repository.RoomRepository;
 import tim31.pswisa.repository.UserRepository;
+import org.springframework.context.annotation.Lazy;
 
 @Service
 public class ClinicAdministratorService {
@@ -34,6 +35,7 @@ public class ClinicAdministratorService {
 	@Autowired
 	private ClinicAdministratorRepository clinicAdministratorRepository;
 
+	@Lazy
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
