@@ -13,6 +13,7 @@ import tim31.pswisa.model.Patient;
 import tim31.pswisa.model.User;
 import tim31.pswisa.repository.PatientRepository;
 import tim31.pswisa.repository.UserRepository;
+import org.springframework.context.annotation.Lazy;
 
 @Service
 public class LoggingService implements UserDetailsService {
@@ -26,6 +27,7 @@ public class LoggingService implements UserDetailsService {
 	@Autowired
 	private AuthorityService authService;
 
+	@Lazy
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
