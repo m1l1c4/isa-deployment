@@ -18,3 +18,12 @@ deploy:
  api-key: 
   secure: $HEROKU_API_KEY
  app: clinical-center-tim31
+ 
+ addons:
+  sonarcloud:
+    organization: "m1l1c4"
+    token:
+      secure: "**************************"
+
+script:
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
