@@ -30,6 +30,7 @@ import tim31.pswisa.repository.CheckUpRepository;
 import tim31.pswisa.repository.ClinicRepository;
 import tim31.pswisa.repository.MedicalWorkerRepository;
 import tim31.pswisa.repository.UserRepository;
+import org.springframework.context.annotation.Lazy;
 
 @Service
 @Transactional(readOnly = true)
@@ -44,6 +45,7 @@ public class MedicalWorkerService {
 	@Autowired
 	private UserRepository userRepository;
 
+	@Lazy
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
