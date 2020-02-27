@@ -30,7 +30,6 @@ import tim31.pswisa.repository.CheckUpRepository;
 import tim31.pswisa.repository.ClinicRepository;
 import tim31.pswisa.repository.MedicalWorkerRepository;
 import tim31.pswisa.repository.UserRepository;
-import org.springframework.context.annotation.Lazy;
 
 @Service
 @Transactional(readOnly = true)
@@ -45,7 +44,6 @@ public class MedicalWorkerService {
 	@Autowired
 	private UserRepository userRepository;
 
-	@Lazy
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
@@ -101,6 +99,7 @@ public class MedicalWorkerService {
 	 * @param mw        - new information about medical worker
 	 * @return - (MedicalWorker) This method returns updated medicalWorker
 	 */
+	@Transactional(readOnly = false)
 	public MedicalWorker updateMedicalWorker(MedicalWorker medWorker, MedicalWorkerDTO mw) {
 		medWorker.getUser().setName(mw.getUser().getName());
 		medWorker.getUser().setSurname(mw.getUser().getSurname());
@@ -137,6 +136,7 @@ public class MedicalWorkerService {
 	 * @param clinicAdministrator - logged clinic administrator
 	 * @return - (String) This method returns string ok or ""
 	 */
+	@Transactional(readOnly = false)
 	public String deleteDoctor(String email, ClinicAdministrator clinicAdministrator) {
 		Clinic clinic = clinicService.findOneById(clinicAdministrator.getClinic().getId());
 		User user = userService.findOneByEmail(email);
@@ -269,6 +269,7 @@ public class MedicalWorkerService {
 		return medicalWorkerRepository.findById(id).orElseGet(null);
 	}
 
+	@Transactional(readOnly = false)
 	public MedicalWorker update(MedicalWorker mw) {
 		return medicalWorkerRepository.save(mw);
 	}
